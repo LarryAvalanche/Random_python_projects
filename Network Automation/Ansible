@@ -1,0 +1,92 @@
+Ansible Workstation ( Agentless Configuration Management Tool )
+
+- Linux Host
+- Python Interpreter —> uses local Python modules
+- SSH functionality  —> to the remote devices to interact
+
+Contains:
+
+(1) ansible.cfg 
+(2) inventory
+(3) playbook.yml
+(4) module.py
+
+Used to automate new Cisco devices :
+
+Service providers
+Virtual Networking
+Cloud-based switches
+Campus LAN
+Data center
+
+Advantage : Can deploy a full stack of devices and replaces all manual processes with a single tool
+
+Supports various communication tools ( through a console ) : allowing more flexibility to interact with the devices
+
+- Telnet
+- REST
+- SNMP
+______________________________________________________________________________________________________________________
+
+Ansible -> created to automate Linux servers and automates by using ansible modules which most of them are in python
+
+Playbooks : Sets of automated tasks and written in standard-based YAML ( markup language like HTML ) and contain logic to orchestrate workflows
+
+ansible.cfg : a text file to declare details of deployment ( location is configurable )
+
+Default location for ansible.cfg : /etc/ansible/directory ( adequate for most environments ) * May need to change SSH or privileged escalation seetings or module paths in the ansible.cfg file
+
+3 locations in ansible.cfg :
+
+(1) ansible.cfg [current directory]
+(2) ansible.cfg [home directory]
+(3) /etc/ansible/ansible.cfg
+
+Recommendation : Keep the ansible.cfg file in the root of the project folder
+_____________________________________________________________________________________________________________________
+
+Ansible Inventory File : Identifies hosts that are managed by Ansible [Possible hosts’ list is stored here]
+Default location : /etc/ansible/directory [‘Hosts’]
+When executing a playbook, Ansible needs to know which hosts the playbook must act on.
+
+To change the location of the host files / to change the name of the file to something other than hosts -> use -i <filename> option when running playbooks
+
+Recommendation : Keep the inventory file in the root of the project directory
+_____________________________________________________________________________________________________________________
+
+Automate Networking Tasks
+
+(1) Managing network configurations
+   
+- When communicating with remote devices, Ansible can be used to deploy configuration commands or configuration files.
+- Ansible Integration : Jinja2 -> allows the creation of configuration templates that are based on the device configuration file and also generates configurations in an automated way to then push to every device in the inventory. 
+
+(2) Retieving network configurations and operational data : To ensure that the infrastructure is in its desired state , many modules that are built for Ansible are designed to check if the current configuration is at its desired state, and if not, to make the change. 
+
+The capability of writing your own playbooks allows you to create nearly limitless types of applications for a use case, as needed for network automation.
+_____________________________________________________________________________________________________________________
+
+Ansible for the Enterprise
+
+Ansible engine : a command-line utility that runs on Linux and may need added features to deploy Ansible into production for a larger team.
+
+Features : role-based access control (RBAC) and integration into Lightweight Directory Access Protocol (LDAP) for authentication.
+
+Ansible AWX : an open source project that offers RBAC, API access, credential management, logging, Git integration, reporting, and an intuitive user interface for managing Ansible deployments.
+
+Ansible Tower : an enterprise / commercial version of Ansible AWX 
+              : similar to Fedora and Red Hat Enterprise Linux (RHEL)
+              : AWX is to Fedora / Tower is to RHEL.
+
+A list of features that Ansible AWX and Ansible Tower offer:
+
+- Tower dashboard: Tower UI offers a friendly graphical framework for IT orchestration needs.
+
+- RBAC: a method of restricting network access based on the roles of individual users within an enterprise.
+
+- Reporting and controls : Logging ->  a standalone feature that was introduced in Ansible Tower version 3.1.0 that provides the capability of sending detailed logs to several kinds of third-party external log aggregation services.  Services connected to this data feed serve as a useful means toward gaining insight into Tower usage or technical trends. The data can be used to analyze events in the infrastructure, monitor for anomalies, and correlate events from one service with events in another. 
+
+- Fully documented REST API: Everything that you can do in the Ansible Tower user interface can be done from the API. You can also use it to view everything, ranging from credentials to users.
+_____________________________________________________________________________________________________________________
+
+
